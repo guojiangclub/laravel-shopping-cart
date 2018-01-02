@@ -1,0 +1,21 @@
+{
+    "name": "element-vip/laravel-shopping-cart",
+    "description": "Shopping cart for Laravel Application.",
+    "keywords": [
+        "shopping cart",
+        "shopping",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "peter chen",
+            "email": "chenhao@element.vip"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ElementVip\\Shoppingcart\\": "src/"
+        }
+    },
+    "license": "MIT"
+}
