@@ -1,5 +1,15 @@
 <?php
-namespace ElementVip\Shoppingcart;
+
+/*
+ * This file is part of ibrand/laravel-shopping-cart.
+ *
+ * (c) iBrand <https://www.ibrand.cc>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace iBrand\Shoppingcart;
 
 use Illuminate\Support\Collection;
 
@@ -21,7 +31,7 @@ class Item extends Collection
     /**
      * Magic accessor.
      *
-     * @param string $property Property name.
+     * @param string $property property name
      *
      * @return mixed
      */
@@ -38,13 +48,11 @@ class Item extends Collection
         $model = $this->get('__model');
         $class = explode('\\', $model);
 
-        if (strtolower(end($class)) === $property OR $property==='model') {
+        if (strtolower(end($class)) === $property or 'model' === $property) {
             $model = new $model();
 
             return $model->find($this->id);
         }
-
-        return;
     }
 
     /**
@@ -57,12 +65,20 @@ class Item extends Collection
         return $this->__raw_id;
     }
 
+    /**
+     * @param mixed $items
+     * @return static
+     */
     public function intersect($items)
     {
         $this->forget('dynamic_sku');
+
         return new static(array_intersect($this->items, $this->getArrayableItems($items)));
     }
 
+    /**
+     * @return string
+     */
     public function getKey()
     {
         return $this->rawId();

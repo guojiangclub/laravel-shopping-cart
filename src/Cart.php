@@ -1,10 +1,19 @@
 <?php
-namespace ElementVip\Shoppingcart;
 
-use ElementVip\Shoppingcart\Storage\SessionStorage;
-use ElementVip\Shoppingcart\Storage\Storage;
+/*
+ * This file is part of ibrand/laravel-shopping-cart.
+ *
+ * (c) iBrand <https://www.ibrand.cc>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace iBrand\Shoppingcart;
+
+use iBrand\Shoppingcart\Storage\SessionStorage;
+use iBrand\Shoppingcart\Storage\Storage;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
 
 /**
@@ -12,7 +21,6 @@ use Illuminate\Support\Collection;
  */
 class Cart
 {
-
     /**
      * Session manager.
      *
@@ -44,8 +52,8 @@ class Cart
     /**
      * Constructor.
      *
-     * @param \Illuminate\Session\SessionManager $session Session class name
-     * @param \Illuminate\Contracts\Events\Dispatcher $event Event class name
+     * @param \Illuminate\Session\SessionManager      $session Session class name
+     * @param \Illuminate\Contracts\Events\Dispatcher $event   Event class name
      */
     public function __construct(Storage $storage, Dispatcher $event)
     {
@@ -67,7 +75,7 @@ class Cart
      */
     public function name($name)
     {
-        $this->name = 'cart.' . $name;
+        $this->name = 'cart.'.$name;
 
         return $this;
     }
@@ -102,11 +110,11 @@ class Cart
     /**
      * Add a row to the cart.
      *
-     * @param int|string $id Unique ID of the item
-     * @param string $name Name of the item
-     * @param int $qty Item qty to add to the cart
-     * @param float $price Price of one item
-     * @param array $attributes Array of additional attributes, such as 'size' or 'color'...
+     * @param int|string $id         Unique ID of the item
+     * @param string     $name       Name of the item
+     * @param int        $qty        Item qty to add to the cart
+     * @param float      $price      Price of one item
+     * @param array      $attributes Array of additional attributes, such as 'size' or 'color'...
      *
      * @return string
      */
@@ -126,7 +134,7 @@ class Cart
     /**
      * Update the quantity of one row of the cart.
      *
-     * @param string $rawId The __raw_id of the item you want to update
+     * @param string    $rawId     The __raw_id of the item you want to update
      * @param int|array $attribute New quantity of the item|Array of attributes to update
      *
      * @return Item|bool
@@ -141,7 +149,6 @@ class Cart
         $this->event->fire('cart.updating', [$row, $cart]);
 
         if (is_array($attribute)) {
-
             $raw = $this->updateAttribute($rawId, $attribute);
         } else {
             $raw = $this->updateQty($rawId, $attribute);
@@ -333,11 +340,11 @@ class Cart
     /**
      * Add row to the cart.
      *
-     * @param string $id Unique ID of the item
-     * @param string $name Name of the item
-     * @param int $qty Item qty to add to the cart
-     * @param float $price Price of one item
-     * @param array $attributes Array of additional options, such as 'size' or 'color'
+     * @param string $id         Unique ID of the item
+     * @param string $name       Name of the item
+     * @param int    $qty        Item qty to add to the cart
+     * @param float  $price      Price of one item
+     * @param array  $attributes Array of additional options, such as 'size' or 'color'
      *
      * @return string
      */
@@ -367,8 +374,8 @@ class Cart
     /**
      * Generate a unique id for the new row.
      *
-     * @param string $id Unique ID of the item
-     * @param array $attributes Array of additional options, such as 'size' or 'color'
+     * @param string $id         Unique ID of the item
+     * @param array  $attributes Array of additional options, such as 'size' or 'color'
      *
      * @return string
      */
@@ -376,7 +383,7 @@ class Cart
     {
         ksort($attributes);
 
-        return md5($id . serialize($attributes));
+        return md5($id.serialize($attributes));
     }
 
     /**
@@ -424,8 +431,8 @@ class Cart
     /**
      * Update a row if the rawId already exists.
      *
-     * @param string $rawId The ID of the row to update
-     * @param array $attributes The quantity to add to the row
+     * @param string $rawId      The ID of the row to update
+     * @param array  $attributes The quantity to add to the row
      *
      * @return Item
      */
@@ -453,12 +460,12 @@ class Cart
     /**
      * Create a new row Object.
      *
-     * @param string $rawId The ID of the new row
-     * @param string $id Unique ID of the item
-     * @param string $name Name of the item
-     * @param int $qty Item qty to add to the cart
-     * @param float $price Price of one item
-     * @param array $attributes Array of additional options, such as 'size' or 'color'
+     * @param string $rawId      The ID of the new row
+     * @param string $id         Unique ID of the item
+     * @param string $name       Name of the item
+     * @param int    $qty        Item qty to add to the cart
+     * @param float  $price      Price of one item
+     * @param array  $attributes Array of additional options, such as 'size' or 'color'
      *
      * @return Item
      */
@@ -478,12 +485,12 @@ class Cart
     /**
      * Make a row item.
      *
-     * @param string $rawId Raw id.
-     * @param mixed $id Item id.
-     * @param string $name Item name.
-     * @param int $qty Quantity.
-     * @param float $price Price.
-     * @param array $attributes Other attributes.
+     * @param string $rawId      raw id
+     * @param mixed  $id         item id
+     * @param string $name       item name
+     * @param int    $qty        quantity
+     * @param float  $price      price
+     * @param array  $attributes other attributes
      *
      * @return Item
      */
@@ -504,7 +511,7 @@ class Cart
      * Update the quantity of a row.
      *
      * @param string $rawId The ID of the row
-     * @param int $qty The qty to add
+     * @param int    $qty   The qty to add
      *
      * @return Item|bool
      */
@@ -520,8 +527,8 @@ class Cart
     /**
      * Update an attribute of the row.
      *
-     * @param string $rawId The ID of the row
-     * @param array $attributes An array of attributes to update
+     * @param string $rawId      The ID of the row
+     * @param array  $attributes An array of attributes to update
      *
      * @return Item
      */

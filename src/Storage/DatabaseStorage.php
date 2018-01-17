@@ -1,23 +1,45 @@
 <?php
 
-namespace ElementVip\Shoppingcart\Storage;
+/*
+ * This file is part of ibrand/laravel-shopping-cart.
+ *
+ * (c) iBrand <https://www.ibrand.cc>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use ElementVip\Shoppingcart\Item;
-use Illuminate\Database\Eloquent\Collection;
+namespace iBrand\Shoppingcart\Storage;
+
 use DB;
+use iBrand\Shoppingcart\Item;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class DatabaseStorage
+ * @package iBrand\Shoppingcart\Storage
+ */
 class DatabaseStorage implements Storage
 {
-
+    /**
+     * @var string
+     */
     private $table = 'shopping_cart';
 
+    /**
+     * @var array
+     */
     private $filed = ['__raw_id', 'id', 'name', 'qty', 'price', 'total', '__model', 'type', 'status'];
 
+    /**
+     * @param $key
+     * @param $values
+     */
     public function set($key, $values)
     {
         $rawIds = $values->pluck('__raw_id')->toArray();
 
-        DB::table($this->table)->whereNotIn('__raw_id',$rawIds)->where('key',$key)->delete();
+        DB::table($this->table)->whereNotIn('__raw_id', $rawIds)->where('key', $key)->delete();
 
         $values = $values->toArray();
         foreach ($values as $value) {
@@ -33,6 +55,11 @@ class DatabaseStorage implements Storage
         }
     }
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return Collection
+     */
     public function get($key, $default = null)
     {
         $items = DB::table($this->table)->where('key', $key)->get();
@@ -46,9 +73,13 @@ class DatabaseStorage implements Storage
             $item = array_merge($item, $attr);
             $collection[$item['__raw_id']] = new Item($item);
         }
+
         return new Collection($collection);
     }
 
+    /**
+     * @param $key
+     */
     public function forget($key)
     {
         DB::table($this->table)->where('key', $key)->delete();
