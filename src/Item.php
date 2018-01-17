@@ -67,6 +67,7 @@ class Item extends Collection
 
     /**
      * @param mixed $items
+     *
      * @return static
      */
     public function intersect($items)

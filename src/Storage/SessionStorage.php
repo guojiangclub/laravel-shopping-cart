@@ -12,8 +12,7 @@
 namespace iBrand\Shoppingcart\Storage;
 
 /**
- * Class SessionStorage
- * @package iBrand\Shoppingcart\Storage
+ * Class SessionStorage.
  */
 class SessionStorage implements Storage
 {
@@ -31,6 +30,7 @@ class SessionStorage implements Storage
     /**
      * @param $key
      * @param null $default
+     *
      * @return \Illuminate\Session\SessionManager|\Illuminate\Session\Store|mixed
      */
     public function get($key, $default = null)

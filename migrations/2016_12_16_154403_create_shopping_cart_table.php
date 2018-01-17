@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of ibrand/laravel-sms.
+ * This file is part of ibrand/laravel-shopping-cart.
  *
  * (c) iBrand <https://www.ibrand.cc>
  *

@@ -16,8 +16,7 @@ use iBrand\Shoppingcart\Item;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class DatabaseStorage
- * @package iBrand\Shoppingcart\Storage
+ * Class DatabaseStorage.
  */
 class DatabaseStorage implements Storage
 {
@@ -58,6 +57,7 @@ class DatabaseStorage implements Storage
     /**
      * @param $key
      * @param null $default
+     *
      * @return Collection
      */
     public function get($key, $default = null)

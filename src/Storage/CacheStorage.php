@@ -14,8 +14,7 @@ namespace iBrand\Shoppingcart\Storage;
 use Cache;
 
 /**
- * Class CacheStorage
- * @package iBrand\Shoppingcart\Storage
+ * Class CacheStorage.
  */
 class CacheStorage implements Storage
 {
@@ -51,6 +50,7 @@ class CacheStorage implements Storage
     /**
      * @param $key
      * @param null $default
+     *
      * @return mixed
      */
     public function get($key, $default = null)
