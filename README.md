@@ -11,7 +11,7 @@
 
 > 目前改包源正在线上使用中
 
-## 安装
+## Installation
 
 ```
 composer require ibrand/laravel-shopping-cart:~1.0 -vvv
@@ -34,7 +34,7 @@ iBrand\Shoppingcart\ServiceProvider::class
 'Cart'=> iBrand\Shoppingcart\Facade::class
 ```
 
-## 使用
+## Usage
 
 ### Select Storage
 
