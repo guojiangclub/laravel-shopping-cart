@@ -9,7 +9,7 @@
 
 1. 重新完善测试用例
 
-> 目前改包源正在线上使用中
+> 目前该包正在 iBrand 产品线上使用中. 可放心使用.
 
 ## Installation
 
@@ -41,15 +41,11 @@ iBrand\Shoppingcart\ServiceProvider::class
 You can change data Storage in `config/ibrand/cart.php` file.
 
 ```php
- 'storage' => \iBrand\Shoppingcart\Storage\CacheStorage::class,
+'storage' => \iBrand\Shoppingcart\Storage\CacheStorage::class,
  
- or
- 
-  'storage' => \iBrand\Shoppingcart\Storage\DatabaseStorage::class,
+'storage' => \iBrand\Shoppingcart\Storage\DatabaseStorage::class,
   
-  or 
-  
-   'storage' => \iBrand\Shoppingcart\Storage\SessionStorage::class,
+'storage' => \iBrand\Shoppingcart\Storage\SessionStorage::class,
 ```
 
 If you use Database Storage, you need to execute `php artisan migrate`
