@@ -24,16 +24,6 @@ class CacheStorage implements Storage
     protected static $lifetime = 43200;
 
     /**
-     * @param $time
-     */
-    public static function setMinutesOfLifeTime($time)
-    {
-        if (is_int($time) && $time > 0) {
-            self::$lifetime = $time;
-        }
-    }
-
-    /**
      * @param $key
      * @param $value
      */
