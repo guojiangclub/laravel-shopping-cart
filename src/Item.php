@@ -53,6 +53,8 @@ class Item extends Collection
 
             return $model->find($this->id);
         }
+
+        return;
     }
 
     /**
