@@ -11,7 +11,7 @@
 
 use Illuminate\Support\Collection;
 use Mockery as m;
-use Overtrue\LaravelShoppingCart\Cart;
+use iBrand\ShoppingCart\Cart;
 
 class CartTest extends PHPUnit_Framework_TestCase
 {
@@ -55,7 +55,7 @@ class CartTest extends PHPUnit_Framework_TestCase
     {
         $row = $this->cart->add(1, 'foo', 5, 100.00);
 
-        $this->assertSame('Overtrue\LaravelShoppingCart\Item', get_class($row));
+        $this->assertSame('iBrand\ShoppingCart\Item', get_class($row));
         $this->assertSame('foo', $row->name);
         $this->assertSame(5, $row->qty);
         $this->assertSame(100.00, $row->price);
@@ -87,7 +87,7 @@ class CartTest extends PHPUnit_Framework_TestCase
     /**
      * test add() with bad quantity.
      *
-     * @expectedException \Overtrue\LaravelShoppingCart\Exception
+     * @expectedException \iBrand\ShoppingCart\Exception
      */
     public function testAddBadQty()
     {
@@ -97,7 +97,7 @@ class CartTest extends PHPUnit_Framework_TestCase
     /**
      * test add() with bad price.
      *
-     * @expectedException \Overtrue\LaravelShoppingCart\Exception
+     * @expectedException \iBrand\ShoppingCart\Exception
      */
     public function testAddBadPrice()
     {
@@ -150,7 +150,7 @@ class CartTest extends PHPUnit_Framework_TestCase
     /**
      * test update() with non-exists raw id.
      *
-     * @expectedException \Overtrue\LaravelShoppingCart\Exception
+     * @expectedException \iBrand\ShoppingCart\Exception
      */
     public function testUpdateBadRawId()
     {
@@ -290,7 +290,7 @@ class CartTest extends PHPUnit_Framework_TestCase
     /**
      * test associate() with non-exists model name.
      *
-     * @expectedException \Overtrue\LaravelShoppingCart\Exception
+     * @expectedException \iBrand\ShoppingCart\Exception
      */
     public function testBadModelName()
     {
