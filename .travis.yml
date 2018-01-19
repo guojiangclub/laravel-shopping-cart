@@ -16,6 +16,3 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
-
-matrix:
-  fast_finish: true
