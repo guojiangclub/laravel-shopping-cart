@@ -9,20 +9,17 @@
  * file that was distributed with this source code.
  */
 
-use Illuminate\Support\Collection;
-use Mockery as m;
 use iBrand\ShoppingCart\Cart;
 
 class SessionCartTest extends Orchestra\Testbench\TestCase
 {
-
     use CartTestTrait;
 
     protected $cart;
 
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('ibrand.cart', require __DIR__ . '/../src/config.php');
+        $app['config']->set('ibrand.cart', require __DIR__.'/../src/config.php');
         $app['config']->set('ibrand.cart.storage', iBrand\Shoppingcart\Storage\SessionStorage::class);
     }
 
@@ -37,6 +34,4 @@ class SessionCartTest extends Orchestra\Testbench\TestCase
 
         $this->cart = $this->app['cart'];
     }
-
-
 }

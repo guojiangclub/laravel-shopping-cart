@@ -11,7 +11,6 @@
 
 namespace iBrand\Shoppingcart;
 
-use iBrand\Shoppingcart\Storage\CacheStorage;
 use iBrand\Shoppingcart\Storage\DatabaseStorage;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
@@ -38,7 +37,7 @@ class ServiceProvider extends LaravelServiceProvider
         //
         //publish a config file
         $this->publishes([
-            __DIR__ . '/config.php' => config_path('ibrand/cart.php'),
+            __DIR__.'/config.php' => config_path('ibrand/cart.php'),
         ]);
     }
 
@@ -49,11 +48,10 @@ class ServiceProvider extends LaravelServiceProvider
     {
         // merge configs
         $this->mergeConfigFrom(
-            __DIR__ . '/config.php', 'ibrand.cart'
+            __DIR__.'/config.php', 'ibrand.cart'
         );
 
         $this->app->singleton(Cart::class, function ($app) {
-
             $currentGuard = null;
             $user = null;
 
@@ -70,7 +68,7 @@ class ServiceProvider extends LaravelServiceProvider
             $cart = new Cart(new $storage(), $app['events']);
 
             if (DatabaseStorage::class == $storage && $user) {
-                $cart->name($currentGuard . $user->id);
+                $cart->name($currentGuard.$user->id);
                 $cart->saveFromSession();
             }
 
@@ -95,6 +93,6 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function registerMigrations()
     {
-        return $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+        return $this->loadMigrationsFrom(__DIR__.'/../migrations');
     }
 }

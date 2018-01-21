@@ -38,6 +38,7 @@ class DatabaseStorage implements Storage
     {
         if (is_null($values)) {
             $this->forget($key);
+
             return;
         }
 

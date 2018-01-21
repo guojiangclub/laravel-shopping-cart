@@ -11,7 +11,6 @@
 
 namespace iBrand\Shoppingcart;
 
-use iBrand\Shoppingcart\Storage\SessionStorage;
 use iBrand\Shoppingcart\Storage\Storage;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Collection;
@@ -24,7 +23,7 @@ class Cart
     /**
      * Session manager.
      *
-     * @var \Illuminate\Session\SessionManager
+     * @var \iBrand\Shoppingcart\Storage\Storage
      */
     protected $storage;
 
@@ -52,7 +51,7 @@ class Cart
     /**
      * Constructor.
      *
-     * @param \Illuminate\Session\SessionManager      $session Session class name
+     * @param \iBrand\Shoppingcart\Storage\Storage    $storage $storage class name
      * @param \Illuminate\Contracts\Events\Dispatcher $event   Event class name
      */
     public function __construct(Storage $storage, Dispatcher $event)
@@ -397,7 +396,7 @@ class Cart
     }
 
     /**
-     * Sync the cart to session.
+     * Sync the cart to strage.
      *
      * @param \Illuminate\Support\Collection|null $cart The new cart content
      *
@@ -406,6 +405,7 @@ class Cart
     protected function save($cart)
     {
         $this->storage->set($this->name, $cart);
+
         return $cart;
     }
 
