@@ -48,7 +48,7 @@ class Item extends Collection
         $model = $this->get('__model');
         $class = explode('\\', $model);
 
-        if (strtolower(end($class)) === $property or 'model' === $property) {
+        if (strtolower(end($class)) === $property || 'model' === $property) {
             $model = new $model();
 
             return $model->find($this->id);
