@@ -2,6 +2,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/build-status/master)
+[![Latest Stable Version](https://poser.pugx.org/ibrand/laravel-shopping-cart/v/stable)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
+[![Latest Unstable Version](https://poser.pugx.org/ibrand/laravel-shopping-cart/v/unstable)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
+[![License](https://poser.pugx.org/ibrand/laravel-shopping-cart/license)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
 
 本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
 
