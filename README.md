@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/ibrandcc/laravel-shopping-cart.svg?branch=master)](https://travis-ci.org/ibrandcc/laravel-shopping-cart)
+
+
 本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
 
 1. 购物车数据支持 Cache 和 Database 存储

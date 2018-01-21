@@ -10,5 +10,5 @@
  */
 
 return [
-    'storage' => \iBrand\Shoppingcart\Storage\CacheStorage::class,
+    'storage' => \iBrand\Shoppingcart\Storage\DatabaseStorage::class,
 ];

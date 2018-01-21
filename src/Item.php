@@ -68,18 +68,6 @@ class Item extends Collection
     }
 
     /**
-     * @param mixed $items
-     *
-     * @return static
-     */
-    public function intersect($items)
-    {
-        $this->forget('dynamic_sku');
-
-        return new static(array_intersect($this->items, $this->getArrayableItems($items)));
-    }
-
-    /**
      * @return string
      */
     public function getKey()

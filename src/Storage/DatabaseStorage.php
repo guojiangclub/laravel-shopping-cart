@@ -36,6 +36,11 @@ class DatabaseStorage implements Storage
      */
     public function set($key, $values)
     {
+        if (is_null($values)) {
+            $this->forget($key);
+            return;
+        }
+
         $rawIds = $values->pluck('__raw_id')->toArray();
 
         DB::table($this->table)->whereNotIn('__raw_id', $rawIds)->where('key', $key)->delete();

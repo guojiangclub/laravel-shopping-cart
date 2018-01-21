@@ -17,8 +17,9 @@
   },
   "require-dev": {
     "mockery/mockery": "~0.9",
-    "phpunit/phpunit": "~4.0",
-    "illuminate/session": "5.0.*"
+    "phpunit/phpunit": "~5.0",
+    "orchestra/testbench": "~3.4",
+    "orchestra/database": "^3.4"
   },
   "autoload": {
     "psr-4": {
@@ -35,5 +36,14 @@
         "Cart": "iBrand\\Shoppingcart\\Facade"
       }
     }
-  }
+  },
+  "repositories": [
+    {
+      "packagist": false
+    },
+    {
+      "type": "composer",
+      "url": "http://packagist.phpcomposer.com"
+    }
+  ]
 }

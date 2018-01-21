@@ -12,7 +12,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateShoppingCartTable extends Migration
+class CreateShoppingCartTestTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,7 +29,7 @@ class CreateShoppingCartTable extends Migration
             $table->decimal('price');
             $table->decimal('total');
             $table->string('__model')->nullable();
-            $table->string('type')->nullable();
+            $table->string('type');
             $table->string('status')->nullable();
             $table->text('attributes')->nullable();
             $table->index('key');

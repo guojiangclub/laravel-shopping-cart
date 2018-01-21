@@ -338,6 +338,16 @@ class Cart
     }
 
     /**
+     * Return whether the shopping cart is empty.
+     *
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return $this->count() <= 0;
+    }
+
+    /**
      * Add row to the cart.
      *
      * @param string $id         Unique ID of the item
@@ -396,12 +406,6 @@ class Cart
     protected function save($cart)
     {
         $this->storage->set($this->name, $cart);
-        if ($this->storage instanceof SessionStorage) {
-            /*\Cookie::forever('cart', $cart);*/
-            setcookie('cart',
-                json_encode($cart), time() + 3600 * 24 * 7, '/', config('session.domain'), false, true);
-        }
-
         return $cart;
     }
 
@@ -412,7 +416,6 @@ class Cart
         $cart = $this->getCart();
         $cart = $cart->merge($session);
         session()->forget('cart.default');
-        setcookie('cart', '', time() - 3600, '/', config('session.domain'), false, false);
         $this->save($cart);
     }
 
