@@ -3,16 +3,12 @@
 
 本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
 
-1. 购物车数据支持 Cache 和 Database 存储
+1. 购物车数据支持 Database 存储
 2. Item 增加 Model 属性返回。因为购物车可能是SPU或者SKU，因此直接通过 model 属性直接返回相关对象。
 3. 支持把 Session 中的数据直接同步到 Cache 或 Database 中。
 4. 支持多 Guard. 因为在 iBrand 产品有商城购物车和导购购物车。
 
-## TODO：
-
-1. 重新完善测试用例
-
-> 目前该包正在 iBrand 产品线上使用中. 可放心使用.
+> 已经完成了 Session 和 Database 模式下的单元测试，而且正在 iBrand 产品线上使用中. 可放心使用.
 
 ## Installation
 
@@ -44,8 +40,6 @@ iBrand\Shoppingcart\ServiceProvider::class
 You can change data Storage in `config/ibrand/cart.php` file.
 
 ```php
-'storage' => \iBrand\Shoppingcart\Storage\CacheStorage::class,
- 
 'storage' => \iBrand\Shoppingcart\Storage\DatabaseStorage::class,
   
 'storage' => \iBrand\Shoppingcart\Storage\SessionStorage::class,

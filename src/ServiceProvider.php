@@ -38,7 +38,7 @@ class ServiceProvider extends LaravelServiceProvider
         //
         //publish a config file
         $this->publishes([
-            __DIR__.'/config.php' => config_path('ibrand/cart.php'),
+            __DIR__ . '/config.php' => config_path('ibrand/cart.php'),
         ]);
     }
 
@@ -49,14 +49,15 @@ class ServiceProvider extends LaravelServiceProvider
     {
         // merge configs
         $this->mergeConfigFrom(
-            __DIR__.'/config.php', 'ibrand.cart'
+            __DIR__ . '/config.php', 'ibrand.cart'
         );
 
         $this->app->singleton(Cart::class, function ($app) {
+
             $currentGuard = null;
+            $user = null;
 
             $guards = array_keys(config('auth.guards'));
-
             foreach ($guards as $guard) {
                 if ($user = auth($guard)->user()) {
                     $currentGuard = $guard;
@@ -68,11 +69,9 @@ class ServiceProvider extends LaravelServiceProvider
 
             $cart = new Cart(new $storage(), $app['events']);
 
-            if (CacheStorage::class == $storage or DatabaseStorage::class == $storage) {
-                if ($user) {
-                    $cart->name($currentGuard.$user->id);
-                    $cart->saveFromSession();
-                }
+            if (DatabaseStorage::class == $storage && $user) {
+                $cart->name($currentGuard . $user->id);
+                $cart->saveFromSession();
             }
 
             return $cart;
@@ -96,6 +95,6 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function registerMigrations()
     {
-        return $this->loadMigrationsFrom(__DIR__.'/../migrations');
+        return $this->loadMigrationsFrom(__DIR__ . '/../migrations');
     }
 }
