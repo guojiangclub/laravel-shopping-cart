@@ -23,17 +23,18 @@ class CreateShoppingCartTestTable extends Migration
         Schema::create('shopping_cart', function (Blueprint $table) {
             $table->string('key');
             $table->string('__raw_id');
+            $table->string('guard')->nullable();
+            $table->integer('user_id')->nullable();
             $table->integer('id');
             $table->string('name');
             $table->integer('qty');
             $table->decimal('price');
             $table->decimal('total');
             $table->string('__model')->nullable();
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->string('status')->nullable();
             $table->text('attributes')->nullable();
-            $table->index('key');
-            $table->index('__raw_id');
+            $table->primary(['key', '__raw_id']);
             $table->nullableTimestamps();
         });
     }

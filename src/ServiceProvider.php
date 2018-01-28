@@ -11,7 +11,7 @@
 
 namespace iBrand\Shoppingcart;
 
-use iBrand\Shoppingcart\Storage\DatabaseStorage;
+use iBrand\Shoppingcart\Storage\SessionStorage;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 /**
@@ -52,6 +52,15 @@ class ServiceProvider extends LaravelServiceProvider
         );
 
         $this->app->singleton(Cart::class, function ($app) {
+            $storage = config('ibrand.cart.storage');
+
+            $cart = new Cart(new $storage(), $app['events']);
+
+            if (SessionStorage::class == $storage) {
+                return $cart;
+            }
+
+            //The below code is used of database storage
             $currentGuard = null;
             $user = null;
 
@@ -63,13 +72,11 @@ class ServiceProvider extends LaravelServiceProvider
                 }
             }
 
-            $storage = config('ibrand.cart.storage');
-
-            $cart = new Cart(new $storage(), $app['events']);
-
-            if (DatabaseStorage::class == $storage && $user) {
-                $cart->name($currentGuard.$user->id);
-                $cart->saveFromSession();
+            if ($user) {
+                //The cart name like `cart.{guard}.{user_id}`： cart.api.1
+                $cart->name($currentGuard.'.'.$user->id);
+            }else{
+                throw new Exception('Invalid auth.');
             }
 
             return $cart;

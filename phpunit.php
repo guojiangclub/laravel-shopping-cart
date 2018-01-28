@@ -15,3 +15,4 @@ date_default_timezone_set('UTC');
 
 require __DIR__.'/tests/CartTestTrait.php';
 require __DIR__.'/tests/Product.php';
+require __DIR__.'/tests/User.php';

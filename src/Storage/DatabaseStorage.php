@@ -44,13 +44,19 @@ class DatabaseStorage implements Storage
 
         $rawIds = $values->pluck('__raw_id')->toArray();
 
+        //Delete the data that has been removed from cart.
         DB::table($this->table)->whereNotIn('__raw_id', $rawIds)->where('key', $key)->delete();
+
+        $keys = explode('.', $key);
+
+        $userId = end($keys);
+        $guard = prev($keys);
 
         $values = $values->toArray();
         foreach ($values as $value) {
             $item = array_only($value, $this->filed);
             $attr = json_encode(array_except($value, $this->filed));
-            $insert = array_merge($item, ['attributes' => $attr, 'key' => $key]);
+            $insert = array_merge($item, ['attributes' => $attr, 'key' => $key, 'guard' => $guard, 'user_id' => $userId]);
             if (DB::table($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])->first()) {
                 DB::table($this->table)->where(['key' => $key, '__raw_id' => $item['__raw_id']])
                     ->update(array_except($insert, ['key', '__raw_id']));

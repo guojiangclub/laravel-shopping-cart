@@ -24,6 +24,8 @@
                 <file>./src/Exception.php</file>
                 <file>./src/Facade.php</file>
                 <file>./src/ServiceProvider.php</file>
+                <file>./src/Storage/DatabaseStorage.php</file>
+                <file>./src/Storage/SessionStorage.php</file>
             </exclude>
         </whitelist>
     </filter>
