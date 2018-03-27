@@ -69,7 +69,7 @@ class DatabaseCartTest extends Orchestra\Testbench\TestCase
      */
     public function testName()
     {
-        $this->assertEquals('cart.api.1', $this->cart->getName());
+        $this->assertEquals('cart.default.1', $this->cart->getName());
         $this->cart->name('ibrand');
         $this->assertEquals('cart.ibrand', $this->cart->getName());
     }

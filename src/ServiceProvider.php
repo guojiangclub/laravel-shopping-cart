@@ -37,7 +37,7 @@ class ServiceProvider extends LaravelServiceProvider
         //
         //publish a config file
         $this->publishes([
-            __DIR__.'/config.php' => config_path('ibrand/cart.php'),
+            __DIR__ . '/config.php' => config_path('ibrand/cart.php'),
         ]);
     }
 
@@ -48,7 +48,7 @@ class ServiceProvider extends LaravelServiceProvider
     {
         // merge configs
         $this->mergeConfigFrom(
-            __DIR__.'/config.php', 'ibrand.cart'
+            __DIR__ . '/config.php', 'ibrand.cart'
         );
 
         $this->app->singleton(Cart::class, function ($app) {
@@ -61,7 +61,7 @@ class ServiceProvider extends LaravelServiceProvider
             }
 
             //The below code is used of database storage
-            $currentGuard = null;
+            $currentGuard = 'default';
             $user = null;
 
             $guards = array_keys(config('auth.guards'));
@@ -74,8 +74,16 @@ class ServiceProvider extends LaravelServiceProvider
 
             if ($user) {
                 //The cart name like `cart.{guard}.{user_id}`： cart.api.1
-                $cart->name($currentGuard.'.'.$user->id);
-            }else{
+
+                $aliases = config('ibrand.cart.aliases');
+
+                if (isset($aliases[$currentGuard])) {
+                    $currentGuard = $aliases[$currentGuard];
+                }
+
+                $cart->name($currentGuard . '.' . $user->id);
+
+            } else {
                 throw new Exception('Invalid auth.');
             }
 
@@ -100,6 +108,6 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function registerMigrations()
     {
-        return $this->loadMigrationsFrom(__DIR__.'/../migrations');
+        return $this->loadMigrationsFrom(__DIR__ . '/../migrations');
     }
 }

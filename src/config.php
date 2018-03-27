@@ -11,4 +11,10 @@
 
 return [
     'storage' => \iBrand\Shoppingcart\Storage\DatabaseStorage::class,
+
+    /** @lang guards alias name. */
+    'aliases' => [
+        'web' => 'default',
+        'api' => 'default'
+    ]
 ];
