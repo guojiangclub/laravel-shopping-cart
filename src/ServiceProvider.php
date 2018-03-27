@@ -64,17 +64,13 @@ class ServiceProvider extends LaravelServiceProvider
             $currentGuard = 'default';
             $user = null;
 
-            $guards = array_keys(config('auth.guards'));
-            foreach ($guards as $guard) {
-                if ($user = auth($guard)->user()) {
-                    $currentGuard = $guard;
-                    break;
-                }
+            if ($defaultGuard = $app['auth']->getDefaultDriver()) {
+                $currentGuard = $defaultGuard;
+                $user = auth($currentGuard)->user();
             }
 
             if ($user) {
                 //The cart name like `cart.{guard}.{user_id}`： cart.api.1
-
                 $aliases = config('ibrand.cart.aliases');
 
                 if (isset($aliases[$currentGuard])) {
