@@ -1,18 +1,18 @@
-[![Build Status](https://travis-ci.org/ibrandcc/laravel-shopping-cart.svg?branch=master)](https://travis-ci.org/ibrandcc/laravel-shopping-cart)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ibrandcc/laravel-shopping-cart/build-status/master)
+[![Build Status](https://travis-ci.org/guojiangclub/laravel-shopping-cart.svg?branch=master)](https://travis-ci.org/ibrandcc/laravel-shopping-cart)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/badges/build.png?b=master)](https://scrutinizer-ci.com/g/guojiangclub/laravel-shopping-cart/build-status/master)
 [![Latest Stable Version](https://poser.pugx.org/ibrand/laravel-shopping-cart/v/stable)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
 [![Latest Unstable Version](https://poser.pugx.org/ibrand/laravel-shopping-cart/v/unstable)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
 [![License](https://poser.pugx.org/ibrand/laravel-shopping-cart/license)](https://packagist.org/packages/ibrand/laravel-shopping-cart)
 
-本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
+购物车在电商场景中基本是必须的一个模块，本包是基于 [overtrue/laravel-shopping-cart][1] 进行扩展开发，主要实现了以下扩展：
 
 1. 购物车数据支持 Database 存储
 2. Item 增加 Model 属性返回。因为购物车可能是SPU或者SKU，因此直接通过 model 属性直接返回相关对象。
-3. 支持多 Guard. 因为在 iBrand 产品有商城购物车和导购购物车。
+3. 支持多 Guard. 因为在果酱小店中有商城购物车和导购购物车。
 
-> 已经完成了 Session 和 Database 模式下的单元测试，而且正在 iBrand 产品线上使用中. 可放心使用.
+> 已经完成了 Session 和 Database 模式下的单元测试，而且正在果酱小店产品线上使用中. 可放心使用.
 
 ## Installation
 
