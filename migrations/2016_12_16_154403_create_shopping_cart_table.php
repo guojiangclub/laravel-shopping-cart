@@ -20,23 +20,25 @@ class CreateShoppingCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_cart', function (Blueprint $table) {
-            $table->string('key');
-            $table->string('__raw_id');
-            $table->string('guard')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('id');
-            $table->string('name');
-            $table->integer('qty');
-            $table->decimal('price');
-            $table->decimal('total');
-            $table->string('__model')->nullable();
-            $table->string('type')->nullable();
-            $table->string('status')->nullable();
-            $table->text('attributes')->nullable();
-            $table->primary(['key', '__raw_id']);
-            $table->nullableTimestamps();
-        });
+        if (!Schema::hasTable('shopping_cart')) {
+            Schema::create('shopping_cart', function (Blueprint $table) {
+                $table->string('key');
+                $table->string('__raw_id');
+                $table->string('guard')->nullable();
+                $table->integer('user_id')->nullable();
+                $table->integer('id');
+                $table->string('name');
+                $table->integer('qty');
+                $table->decimal('price');
+                $table->decimal('total');
+                $table->string('__model')->nullable();
+                $table->string('type')->nullable();
+                $table->string('status')->nullable();
+                $table->text('attributes')->nullable();
+                $table->primary(['key', '__raw_id']);
+                $table->nullableTimestamps();
+            });
+        }
     }
 
     /**
@@ -44,6 +46,6 @@ class CreateShoppingCartTable extends Migration
      */
     public function down()
     {
-        Schema::drop('shopping_cart');
+        Schema::dropIfExists('shopping_cart');
     }
 }
