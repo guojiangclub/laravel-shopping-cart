@@ -21,6 +21,7 @@ class CreateShoppingCartTable extends Migration
     public function up()
     {
         if (!Schema::hasTable('shopping_cart')) {
+
             Schema::create('shopping_cart', function (Blueprint $table) {
                 $table->string('key');
                 $table->string('__raw_id');
