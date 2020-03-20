@@ -11,6 +11,7 @@
 
 namespace iBrand\Shoppingcart;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 
 /**
@@ -46,6 +47,11 @@ class Item extends Collection
         }
 
         $model = $this->get('__model');
+
+        if(!class_exists($model)){
+            $model = Relation::getMorphedModel($model);
+        }
+
         $class = explode('\\', $model);
 
         if (strtolower(end($class)) === $property || 'model' === $property) {
