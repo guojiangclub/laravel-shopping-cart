@@ -1,40 +1,40 @@
 {
-  "name": "ibrand/laravel-shopping-cart",
-  "description": "Shopping cart for Laravel Application.",
-  "keywords": [
-    "shopping cart",
-    "shopping",
-    "laravel"
-  ],
-  "authors": [
-    {
-      "name": "shjchen",
-      "email": "ibrand.shjchen@foxmail.com"
-    }
-  ],
-  "require": {
-    "php": ">=5.6"
-  },
-  "require-dev": {
-    "mockery/mockery": "~0.9",
-    "phpunit/phpunit": "~5.0",
-    "orchestra/testbench": "~3.4",
-    "orchestra/database": "^3.4"
-  },
-  "autoload": {
-    "psr-4": {
-      "iBrand\\Shoppingcart\\": "src/"
-    }
-  },
-  "license": "MIT",
-  "extra": {
-    "laravel": {
-      "providers": [
-        "iBrand\\Shoppingcart\\ServiceProvider"
-      ],
-      "aliases": {
-        "Cart": "iBrand\\Shoppingcart\\Facade"
-      }
-    }
-  }
+	"name": "ibrand/laravel-shopping-cart",
+	"description": "Shopping cart for Laravel Application.",
+	"keywords": [
+		"shopping cart",
+		"shopping",
+		"laravel"
+	],
+	"authors": [
+		{
+			"name": "shjchen",
+			"email": "ibrand.shjchen@foxmail.com"
+		}
+	],
+	"require": {
+		"php": ">=7.0"
+	},
+	"require-dev": {
+		"mockery/mockery": "~1.0",
+		"phpunit/phpunit": "~7.0",
+		"orchestra/testbench": "~3.6",
+		"orchestra/database": "~3.6"
+	},
+	"autoload": {
+		"psr-4": {
+			"iBrand\\Shoppingcart\\": "src/"
+		}
+	},
+	"license": "MIT",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"iBrand\\Shoppingcart\\ServiceProvider"
+			],
+			"aliases": {
+				"Cart": "iBrand\\Shoppingcart\\Facade"
+			}
+		}
+	}
 }
